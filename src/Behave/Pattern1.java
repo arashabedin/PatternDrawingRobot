@@ -6,16 +6,12 @@ import lejos.robotics.RegulatedMotor;
 
 
 // Fibonacci pattern	
-	public class Pattern1 {
+	public class Pattern1 extends Pattern {
 		
-		private int currentFrame = 0;
-		private int currentMove = 0;
-		RegulatedMotor leftMotor;
-		RegulatedMotor rightMotor;
+	
 		private int a = 0;
 		private int b = 1;
-		int[] pattern1 = {100,300,100,300,100,300,100};
-	    boolean isFinished = false;
+		int[] pattern = {100,300,100,300,100,300,100};
 
 		
 		public Pattern1(RegulatedMotor leftMotor, RegulatedMotor rightMotor) {
@@ -26,8 +22,8 @@ import lejos.robotics.RegulatedMotor;
 	
 	public void drawPattern() {
 		
-		boolean isTurned = ((getCurrentMove()%2 == 1 || getCurrentMove() == 1)&&(pattern1[getCurrentMove()]) == getCurrentFrame());
-        boolean isDrawnCurrentLine = ((getCurrentMove()%2 ==0 || getCurrentMove() == 0) && (pattern1[getCurrentMove()] * b) == getCurrentFrame());
+		boolean isTurned = ((getCurrentMove()%2 == 1 || getCurrentMove() == 1)&&(pattern[getCurrentMove()]) == getCurrentFrame());
+        boolean isDrawnCurrentLine = ((getCurrentMove()%2 ==0 || getCurrentMove() == 0) && (pattern[getCurrentMove()] * b) == getCurrentFrame());
 		
         if(isDrawnCurrentLine||isTurned)
 				
@@ -41,7 +37,7 @@ import lejos.robotics.RegulatedMotor;
             setCurrentMove(getCurrentMove() + 1);
 			setCurrentFrame(0);
 			
-			if(getCurrentMove() == pattern1.length) {
+			if(getCurrentMove() == pattern.length) {
 				LCD.clear();
 				int temp_a = b;
 				b = b + a;
@@ -70,23 +66,5 @@ import lejos.robotics.RegulatedMotor;
 		}		
 	}
 	
-	
-	private int getCurrentFrame() {
-		return currentFrame;
-	}
 
-
-	private void setCurrentFrame(int currentFrame) {
-		this.currentFrame = currentFrame;
-	}
-
-	
-	private int getCurrentMove() {
-		return currentMove;
-	}
-
-	private void setCurrentMove(int currentMove) {
-		this.currentMove = currentMove;
-	}
-	
 }

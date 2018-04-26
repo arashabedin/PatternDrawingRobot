@@ -16,7 +16,6 @@ public boolean takeControl() {
 
 private boolean suppressed = false;
 public void action() {
-	//LCD.drawString("forward", 0, 4 );
 	suppressed = false;
 	leftMotor.forward();
 	rightMotor.forward();

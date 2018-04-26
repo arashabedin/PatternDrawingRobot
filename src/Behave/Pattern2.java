@@ -5,76 +5,70 @@ import lejos.robotics.RegulatedMotor;
 
 
 
-	public class Pattern2 {
+	public class Pattern2 extends Pattern{
 		
-		private int currentFrame = 0;
-		private int currentMove = 0;
-		RegulatedMotor leftMotor;
-		RegulatedMotor rightMotor;
-		int[] pattern2 = {100,300,100,300,100,300,100};
-	    boolean isFinished = false;
-
+		final int patternWidth = 200;
+        int[] pattern = {250,300};
+		private boolean turnedLeft = false;
 		
-		public Pattern2(RegulatedMotor leftMotor, RegulatedMotor rightMotor) {
+		public Pattern2(RegulatedMotor leftMotor, RegulatedMotor rightMotor) 
+		{
 			
 			this.leftMotor = leftMotor;
 			this.rightMotor = rightMotor;
 		}
 	
 	public void drawPattern() {
-		
-		boolean isTurned = ((getCurrentMove()%2 == 1 || getCurrentMove() == 1)&&(pattern2[getCurrentMove()]) == getCurrentFrame());
-        boolean isDrawnCurrentLine = ((getCurrentMove()%2 ==0 || getCurrentMove() == 0) && (pattern2[getCurrentMove()]) == getCurrentFrame());
-		
-        if(isDrawnCurrentLine||isTurned)
-				
-				 {
-	
-            setCurrentMove(getCurrentMove() + 1);
-			setCurrentFrame(0);
-			
-			if(getCurrentMove() == pattern2.length) {
-				LCD.clear();
-				setCurrentFrame(0);
-	            setCurrentMove(0);
-			}
-		}
-					
-		else {
 
-		if(getCurrentMove() == 0 || getCurrentMove() %2 == 0) {
-			
-			leftMotor.forward();
-			rightMotor.forward();
+		if(getCurrentMove() == 0) {
+			LCD.drawString("rotate", 0, 4 );
+
+			if(!turnedLeft) {
+				rightMotor.forward();
+				leftMotor.stop();
+
+				
+			}else {
+				leftMotor.forward();
+				rightMotor.stop();
+
+			}
+			setCurrentFrame(getCurrentFrame()+1);
+
+			if(getCurrentFrame() == pattern[getCurrentMove()]) {
+				
+				setCurrentFrame(0);
+				setCurrentMove(1);
+				if(turnedLeft) {
+					turnedLeft=false;
+				}else {
+					turnedLeft=true;
+				}
+			}
 			
 		}else {
 			
-			leftMotor.backward();
+			LCD.drawString("forward", 0, 4 );
+
 			rightMotor.forward();
+			leftMotor.forward();
+			setCurrentFrame(getCurrentFrame() + 1);
+			if(getCurrentFrame() == pattern[getCurrentMove()]) {
+				
+				setCurrentFrame(0);
+				setCurrentMove(0);
+			
+
+				
+			}
+			
 		}
-		
-		setCurrentFrame(getCurrentFrame()+1);
-	
-		}		
-	}
-	
-	
-	private int getCurrentFrame() {
-		return currentFrame;
-	}
 
-
-	private void setCurrentFrame(int currentFrame) {
-		this.currentFrame = currentFrame;
+					
+			
 	}
-
 	
-	private int getCurrentMove() {
-		return currentMove;
-	}
-
-	private void setCurrentMove(int currentMove) {
-		this.currentMove = currentMove;
-	}
+	
+	
 	
 }
