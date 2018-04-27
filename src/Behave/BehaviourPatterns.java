@@ -1,5 +1,6 @@
 package Behave;
 
+import MovingBehaviour.MovingBehaviour;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.Motor;
 import lejos.hardware.sensor.EV3ColorSensor;
@@ -11,7 +12,7 @@ import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
-public class BehaviourPatterns implements Behavior {
+public class BehaviourPatterns extends MovingBehaviour  {
 	
 	
 	Pattern1 pattern1;
@@ -23,7 +24,6 @@ public class BehaviourPatterns implements Behavior {
 	private int pattern = 0;
 
 	public BehaviourPatterns(RegulatedMotor left, RegulatedMotor right, EV3ColorSensor colorSensorLeft, EV3ColorSensor colorSensorRight) {
-		//this.leftMotor = left; this.rightMotor = right;
 		pattern1 = new Pattern1(left,right );
 		pattern2 = new Pattern2(left,right );
 
@@ -41,19 +41,17 @@ public class BehaviourPatterns implements Behavior {
 			setPattern(1);
 			return true;
 		}
-		if(colorSensorLeft.getColorID() == Colors.yellowColor || colorSensorRight.getColorID() == Colors.yellowColor) {
+		else if(colorSensorLeft.getColorID() == Colors.blueColor || colorSensorRight.getColorID() == Colors.blueColor) {
 			setPattern(2);
 			return true;
 		}
-		if(getPattern() != 0) {
+		else if(getPattern() != 0) {
 			return true;
 		}
 		return false;
 	}
 
-	private boolean suppressed = false;
 	public void action() {
-		   suppressed = true;
 
 		switch (getPattern()) {
 		case 1: pattern1.drawPattern();	
@@ -65,13 +63,9 @@ public class BehaviourPatterns implements Behavior {
 	
 		
 		
-	while(!suppressed) Thread.yield();
 	
 
 
-	}
-	public void suppress() {
-		suppressed=true;
 	}
 
 

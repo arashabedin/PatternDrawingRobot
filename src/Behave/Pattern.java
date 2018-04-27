@@ -12,7 +12,6 @@ public abstract class Pattern {
 		return currentFrame;
 	}
 
-
 	public void setCurrentFrame(int currentFrame) {
 		this.currentFrame = currentFrame;
 	}

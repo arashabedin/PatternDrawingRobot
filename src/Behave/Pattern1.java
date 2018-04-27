@@ -61,8 +61,8 @@ import lejos.robotics.RegulatedMotor;
 		}
 		
 		setCurrentFrame(getCurrentFrame()+1);
-		LCD.drawString(b +"", 0, 4 );
-	
+		//LCD.drawString(getCurrentFrame() +"", 0, 4 );
+		LCD.drawString("pattern1", 0, 4 );
 		}		
 	}
 	
