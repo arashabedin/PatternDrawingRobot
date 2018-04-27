@@ -1,4 +1,4 @@
-package Behave;
+package Project;
 
 import lejos.hardware.lcd.LCD;
 import lejos.robotics.RegulatedMotor;
@@ -29,7 +29,7 @@ import lejos.robotics.RegulatedMotor;
 				
 				 {
 			
-			if(b >= 34) {
+			if(b >= 21) {
 				b = 1;
 				a = 0;
 			}

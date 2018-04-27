@@ -15,7 +15,7 @@ public class StateMachine {
 	        
 	        	for(int i = 0; i<movingBehaviours.length; i++) {
 	        		
-	        		if(movingBehaviours[i].takeControl()) {
+	        		if(movingBehaviours[i].checkCondition()) {
 	        			movingBehaviours[i].action();
 	        			break;
 	        		}

@@ -1,4 +1,4 @@
-package Behave;
+package Project;
 
 import lejos.robotics.RegulatedMotor;
 
@@ -7,6 +7,9 @@ public abstract class Pattern {
 	private int currentMove = 0;
 	RegulatedMotor leftMotor;
 	RegulatedMotor rightMotor;
+	
+	
+	abstract public void drawPattern();
 	
 	public int getCurrentFrame() {
 		return currentFrame;

@@ -1,4 +1,4 @@
-package Behave;
+package Project;
 
 import lejos.hardware.lcd.LCD;
 import lejos.robotics.RegulatedMotor;

@@ -1,5 +1,5 @@
 
-package Behave;
+package Project;
 import MovingBehaviour.MovingBehaviour;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.sensor.EV3ColorSensor;
@@ -18,7 +18,7 @@ this.rightMotor = right;
 this.colorSensorLeft = colorSensorLeft;
 this.colorSensorRight = colorSensorRight;
 }
-public boolean takeControl() {
+public boolean checkCondition() {
 
 if(colorSensorLeft.getColorID() == Colors.tableColor || colorSensorRight.getColorID() == Colors.tableColor) {
 	

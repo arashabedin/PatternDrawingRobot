@@ -1,4 +1,4 @@
-package Behave;
+package Project;
 import MovingBehaviour.MovingBehaviour;
 import lejos.hardware.lcd.LCD;
 import lejos.robotics.RegulatedMotor;
@@ -10,7 +10,7 @@ public BehaviourForward(RegulatedMotor left, RegulatedMotor right) {
 	this.leftMotor = left; this.rightMotor = right;
 }
 
-public boolean takeControl() {
+public boolean checkCondition() {
 	return true;
 }
 
@@ -20,9 +20,5 @@ public void action() {
 
 	
 
-
-
 }
-
-
 }

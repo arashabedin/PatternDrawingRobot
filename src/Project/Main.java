@@ -1,4 +1,4 @@
-package Behave;
+package Project;
 import lejos.robotics.RegulatedMotor;
 
 import lejos.robotics.subsumption.Arbitrator;

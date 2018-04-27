@@ -6,7 +6,7 @@ public abstract class MovingBehaviour {
 	protected RegulatedMotor leftMotor;
 	protected RegulatedMotor rightMotor;
 	
-	abstract public boolean takeControl();
+	abstract public boolean checkCondition();
 	abstract public void action();
 	
 	

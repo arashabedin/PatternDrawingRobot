@@ -1,4 +1,4 @@
-package Behave;
+package Project;
 
 import MovingBehaviour.MovingBehaviour;
 import lejos.hardware.lcd.LCD;
@@ -15,18 +15,18 @@ import lejos.robotics.subsumption.Behavior;
 public class BehaviourPatterns extends MovingBehaviour  {
 	
 	
-	Pattern1 pattern1;
-	Pattern2 pattern2;
-
+	Pattern pattern1;
+	Pattern pattern2;
+    Pattern pattern3;
 
 	private EV3ColorSensor colorSensorLeft;
 	private EV3ColorSensor colorSensorRight;
-	private int pattern = 0;
+	private int pattern = 1;
 
 	public BehaviourPatterns(RegulatedMotor left, RegulatedMotor right, EV3ColorSensor colorSensorLeft, EV3ColorSensor colorSensorRight) {
 		pattern1 = new Pattern1(left,right );
 		pattern2 = new Pattern2(left,right );
-
+        pattern3 = new Pattern3(left, right);
 		this.colorSensorLeft = colorSensorLeft;
 		this.colorSensorRight = colorSensorRight;
 	}
@@ -35,14 +35,18 @@ public class BehaviourPatterns extends MovingBehaviour  {
 	
 	
 
-	public boolean takeControl() {
+	public boolean checkCondition() {
 	
 		if(colorSensorLeft.getColorID() == Colors.redColor || colorSensorRight.getColorID() == Colors.redColor) {
 			setPattern(1);
 			return true;
 		}
 		else if(colorSensorLeft.getColorID() == Colors.blueColor || colorSensorRight.getColorID() == Colors.blueColor) {
-			setPattern(2);
+			setPattern(1);
+			return true;
+		}
+		else if(colorSensorLeft.getColorID() == Colors.greenColor || colorSensorRight.getColorID() == Colors.greenColor) {
+			setPattern(1);
 			return true;
 		}
 		else if(getPattern() != 0) {
@@ -57,15 +61,10 @@ public class BehaviourPatterns extends MovingBehaviour  {
 		case 1: pattern1.drawPattern();	
 		break;
 		case 2: pattern2.drawPattern();
+		break;
+		case 3: pattern3.drawPattern();
 		
 		}
-		
-	
-		
-		
-	
-
-
 	}
 
 

@@ -1,4 +1,4 @@
-package Behave;
+package Project;
 
 public class Colors {
 
@@ -6,5 +6,6 @@ public class Colors {
 	final static int paperColor = 6;
 	final static int redColor = 0;
     final static int blueColor = 2;
+    final static int greenColor = 1;
 	
 }
