@@ -20,7 +20,7 @@ public class Main {
 	    EV3ColorSensor colorSensorLeft = new EV3ColorSensor(SensorPort.S4);
 	    EV3ColorSensor colorSensorRight = new EV3ColorSensor(SensorPort.S1);
 	    MovingBehaviour b2 = new BehaviourPatterns(leftMotor,rightMotor, colorSensorLeft, colorSensorRight);
-	    MovingBehaviour b3 = new BehaviourAvoidObject(leftMotor,rightMotor, colorSensorLeft, colorSensorRight);
+	    MovingBehaviour b3 = new BehviourAvoidLeavingPaper(leftMotor,rightMotor, colorSensorLeft, colorSensorRight);
 	    MovingBehaviour[] behaviours = {b3,b2,b1};
 	    stateMachine = new StateMachine(behaviours);
 	    stateMachine.go();

@@ -21,7 +21,6 @@ import lejos.robotics.RegulatedMotor;
 	public void drawPattern() {
 
 		if(getCurrentMove() == 0) {
-			// LCD.drawString("rotate", 0, 4 );
 
 			if(!turnedLeft) {
 				rightMotor.forward();
@@ -48,7 +47,6 @@ import lejos.robotics.RegulatedMotor;
 			
 		}else {
 			
-			//LCD.drawString("forward", 0, 4 );
 
 			rightMotor.forward();
 			leftMotor.forward();

@@ -21,7 +21,7 @@ public class BehaviourPatterns extends MovingBehaviour  {
 
 	private EV3ColorSensor colorSensorLeft;
 	private EV3ColorSensor colorSensorRight;
-	private int pattern = 1;
+	private int pattern = 0;
 
 	public BehaviourPatterns(RegulatedMotor left, RegulatedMotor right, EV3ColorSensor colorSensorLeft, EV3ColorSensor colorSensorRight) {
 		pattern1 = new Pattern1(left,right );
@@ -42,11 +42,11 @@ public class BehaviourPatterns extends MovingBehaviour  {
 			return true;
 		}
 		else if(colorSensorLeft.getColorID() == Colors.blueColor || colorSensorRight.getColorID() == Colors.blueColor) {
-			setPattern(1);
+			setPattern(2);
 			return true;
 		}
 		else if(colorSensorLeft.getColorID() == Colors.greenColor || colorSensorRight.getColorID() == Colors.greenColor) {
-			setPattern(1);
+			setPattern(3);
 			return true;
 		}
 		else if(getPattern() != 0) {
